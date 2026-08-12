@@ -1,0 +1,19 @@
+name: Test Build
+
+on:
+  push:
+    branches:
+      - build-memory-leak-fix
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: linuxmint/github-actions/.github/workflows/do-builds.yml@master
+    with:
+      commit_id: build-memory-leak-fix
+      dependencies: linuxmint/xapp
+      skip_codespell: true
+      upload_artifacts: true
+      artifact_retention_days: 30
+
